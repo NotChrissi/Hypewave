@@ -44,12 +44,10 @@ public class MainController implements Initializable {
 
     public void loadCalculatePane(ActionEvent actionEvent) {
         activateMainPane(calculatePane);
-        System.out.println("calc");
     }
 
     public void loadBillPane(ActionEvent actionEvent) {
         activateMainPane(billPane);
-        System.out.println("bill");
     }
 
 }
