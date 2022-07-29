@@ -20,25 +20,23 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="calculatePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="calculatePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="billPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane fx:id="billPane" layoutX="659.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="-80.0" AnchorPane.leftAnchor="659.0" AnchorPane.rightAnchor="-659.0" AnchorPane.topAnchor="80.0">
+                  <HBox fx:id="inputLine" prefHeight="100.0" prefWidth="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
-                        <HBox fx:id="inputLine" prefHeight="100.0" prefWidth="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                           <children>
-                              <TextField prefHeight="100.0" prefWidth="300.0" />
-                              <TextField layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" />
-                              <TextField layoutX="295.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" />
-                              <TextField layoutX="580.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" />
-                              <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="submit" />
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </HBox>
+                        <TextField prefHeight="100.0" prefWidth="300.0" />
+                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" />
+                        <TextField layoutX="295.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" />
+                        <TextField layoutX="580.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" />
+                        <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="submit" />
                      </children>
-                  </AnchorPane>
-               </children></AnchorPane>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </center>
