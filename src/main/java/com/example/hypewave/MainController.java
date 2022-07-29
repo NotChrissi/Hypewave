@@ -69,7 +69,7 @@ public class MainController implements Initializable {
     }
 
     public void saveBillToSQL(){
-
+        jdbc:mysql://127.0.0.1:3306/?user=Chrissi
     }
 
 
