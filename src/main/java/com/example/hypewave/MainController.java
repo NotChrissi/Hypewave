@@ -44,6 +44,13 @@ public class MainController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        try {
+            getBillInfos();
+            displayBillInfos();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
