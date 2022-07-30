@@ -26,6 +26,7 @@ public class MainController implements Initializable {
     public TextField billInputBetrag;
     public ComboBox billInputTyp;
     public Button billSubmit;
+    public Label billInfoLabel;
 
     private List<Pane> mainPanes = new ArrayList<>();
 
@@ -87,6 +88,16 @@ public class MainController implements Initializable {
         Statement stmt = con.createStatement();
         stmt.execute(query);
         stmt.close();
+        getBillInfos();
+        displayBillInfos();
+    }
+
+    private void displayBillInfos() {
+        String text = "";
+        for(Bill bill : bills){
+            text += bill.Influencer + ", " + bill.Betrag + ", " + bill.Typ + "\n";
+        }
+        billInfoLabel.setText(text);
     }
 
 
@@ -98,4 +109,8 @@ public class MainController implements Initializable {
         activateMainPane(billPane);
     }
 
+    public void refreshBills(ActionEvent actionEvent) throws SQLException {
+        getBillInfos();
+        displayBillInfos();
+    }
 }
