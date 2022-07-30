@@ -59,7 +59,7 @@
                         </AnchorPane>
                     </content>
                   </ScrollPane>
-                  <Button mnemonicParsing="false" onAction="#refreshBills" prefHeight="56.0" prefWidth="78.0" text="Refresh" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="800.0" />
+                  <Button mnemonicParsing="false" onAction="#refreshBills" prefHeight="56.0" prefWidth="78.0" text="Refresh" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="10.0" />
                </children>
             </AnchorPane>
          </children>
