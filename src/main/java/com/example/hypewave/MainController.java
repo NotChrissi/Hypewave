@@ -47,7 +47,7 @@ public class MainController implements Initializable {
     }
 
     public void initSQL() throws SQLException {
-        String connectionUrl = "jdbc:mysql://localhost:3306/Hypewave";
+        String connectionUrl = "jdbc:mysql://217.228.198.39:3306/Hypewave";
         String user = "root";
         String password = "Chrissi123";
         con = DriverManager.getConnection(connectionUrl, user, password);
