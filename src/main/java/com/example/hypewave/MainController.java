@@ -27,6 +27,7 @@ public class MainController implements Initializable {
     public ComboBox billInputTyp;
     public Button billSubmit;
     public Label billInfoLabel;
+    public VBox billInfoVBox;
 
     private List<Pane> mainPanes = new ArrayList<>();
 
@@ -97,6 +98,8 @@ public class MainController implements Initializable {
         stmt.close();
         getBillInfos();
         displayBillInfos();
+        BillLabel test1 = new BillLabel(bills.get(0), billInfoVBox);
+
     }
 
     private void displayBillInfos() {
@@ -104,7 +107,7 @@ public class MainController implements Initializable {
         for(Bill bill : bills){
             text += bill.Influencer + ", " + bill.Betrag + ", " + bill.Typ + "\n";
         }
-        billInfoLabel.setText(text);
+        //billInfoLabel.setText(text);
     }
 
 
