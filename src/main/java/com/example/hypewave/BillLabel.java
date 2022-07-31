@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class BillLabel {
+    int spacing = 10;
     HBox hBox = new HBox();
     Button deleteButton = new Button();
     Label idLabel = new Label();
@@ -31,6 +32,7 @@ public class BillLabel {
         addComponents();
         editComponents();
         this.con = con;
+        hBox.setSpacing(spacing);
     }
 
     public void addComponents(){
