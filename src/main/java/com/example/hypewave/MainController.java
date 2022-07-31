@@ -34,6 +34,7 @@ public class MainController implements Initializable {
     private Connection con;
 
     private List<Bill> bills = new ArrayList<>();
+    private List<BillLabel> billLabels = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,7 +48,6 @@ public class MainController implements Initializable {
         }
         try {
             getBillInfos();
-            displayBillInfos();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -81,9 +81,19 @@ public class MainController implements Initializable {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
+        for(BillLabel billLabel : billLabels){
+            if(!billLabel.deleted){
+                billLabel.delete();
+
+            }
+        }
+
         bills = new ArrayList<>();
+        billLabels = new ArrayList<>();
         while (rs.next()){
-            bills.add(new Bill(rs.getString(1), Integer.parseInt(rs.getString(2)), rs.getString(3)));
+            Bill newBill = new Bill(Integer.parseInt(rs.getString(1)), rs.getString(2), Integer.parseInt(rs.getString(3)), rs.getString(4));
+            bills.add(newBill);
+            billLabels.add(new BillLabel(newBill, billInfoVBox, con));
         }
 
     }
@@ -91,24 +101,17 @@ public class MainController implements Initializable {
     public void saveBillToSQL() throws SQLException {
         String influencer = billInputInfluencer.getText();
         int betrag = Integer.parseInt(billInputBetrag.getText());
-        String typ = billInputTyp.getItems().get(0).toString();
+        String typ = (String) billInputTyp.getValue();
         String query = "INSERT INTO Bills (Influencer, Betrag, Typ) VALUES ('" + influencer + "', " + betrag + ", ' " + typ + "');";
         Statement stmt = con.createStatement();
         stmt.execute(query);
         stmt.close();
         getBillInfos();
-        displayBillInfos();
-        BillLabel test1 = new BillLabel(bills.get(0), billInfoVBox);
+
 
     }
 
-    private void displayBillInfos() {
-        String text = "";
-        for(Bill bill : bills){
-            text += bill.Influencer + ", " + bill.Betrag + ", " + bill.Typ + "\n";
-        }
-        //billInfoLabel.setText(text);
-    }
+
 
 
     public void loadCalculatePane(ActionEvent actionEvent) {
@@ -121,6 +124,5 @@ public class MainController implements Initializable {
 
     public void refreshBills(ActionEvent actionEvent) throws SQLException {
         getBillInfos();
-        displayBillInfos();
     }
 }
