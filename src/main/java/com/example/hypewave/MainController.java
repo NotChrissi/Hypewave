@@ -47,7 +47,7 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         }
         try {
-            getBillInfos();
+            getBillInfos("ORDER BY Bill_ID DESC");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -65,19 +65,10 @@ public class MainController implements Initializable {
     }
 
 
-    public void activateMainPane(Pane mainPane){
-        for(Pane pane : mainPanes){
-            if(pane != mainPane){
-                pane.setVisible(false);
-            }
-            else {
-                pane.setVisible(true);
-            }
-        }
-    }
 
-    public void getBillInfos() throws SQLException {
-        String query  ="SELECT * FROM Bills";
+
+    public void getBillInfos(String order) throws SQLException {
+        String query  ="SELECT * FROM Bills " + order;
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
@@ -106,13 +97,15 @@ public class MainController implements Initializable {
         Statement stmt = con.createStatement();
         stmt.execute(query);
         stmt.close();
-        getBillInfos();
+        getBillInfos("ORDER BY Bill_ID DESC");
 
 
     }
 
 
-
+    public void refreshBills(ActionEvent actionEvent) throws SQLException {
+        getBillInfos("ORDER BY Bill_ID DESC");
+    }
 
     public void loadCalculatePane(ActionEvent actionEvent) {
         activateMainPane(calculatePane);
@@ -122,7 +115,14 @@ public class MainController implements Initializable {
         activateMainPane(billPane);
     }
 
-    public void refreshBills(ActionEvent actionEvent) throws SQLException {
-        getBillInfos();
+    public void activateMainPane(Pane mainPane){
+        for(Pane pane : mainPanes){
+            if(pane != mainPane){
+                pane.setVisible(false);
+            }
+            else {
+                pane.setVisible(true);
+            }
+        }
     }
 }
