@@ -43,6 +43,8 @@ public class MainController implements Initializable {
     public Label billInfoLabel;
     public VBox billInfoVBox;
 
+    public TextField billSearchBar;
+
     private enum billOrderPossibilitys{
         DATUM_AUFSTEIGEND,
         DATUM_ABSTEIGEND,
@@ -185,5 +187,25 @@ public class MainController implements Initializable {
 
         getBillInfos(order);
 
+    }
+
+    public void searchBarKeyTyped() throws SQLException {
+        List<String> colNames = new ArrayList<>();
+        Statement stmnt = billConnection.createStatement();
+        ResultSet rs = stmnt.executeQuery("select * from Bills");
+        ResultSetMetaData rsmd = rs.getMetaData();
+        for(int i = 1; i < rsmd.getColumnCount() + 1; i++){
+            colNames.add(rsmd.getColumnName(i));
+        }
+
+        stmnt.close();
+        String query = "where ";
+        for(String colName : colNames){
+            query += colName + " LIKE '%" + billSearchBar.getText() + "%' or ";
+        }
+
+        query = query.substring(0, query.length() - 4);
+        System.out.println(query);
+        getBillInfos(query);
     }
 }
